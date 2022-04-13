@@ -1,8 +1,9 @@
 import React from 'react';
+import Router from './routes/Router';
 
 const App: React.FC = () => (
   <div className="App">
-    <h1>Olá mundo</h1>
+    <Router />
   </div>
 );
 
