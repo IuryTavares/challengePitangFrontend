@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useEffect, useState } from 'react';
 import { showNotification } from '@mantine/notifications';
 
 import DatePicker from 'react-datepicker';
@@ -19,6 +20,8 @@ const Register = () => {
     setHours(setMinutes(new Date(), 0), hour + 1)
   );
   const [name, setName] = useState<string>();
+
+  useEffect(() => { setName(sessionStorage.getItem('name')?.toString()); }, []);
 
   const filterPassedTime = (time: Date) => {
     const currentDate = new Date();
@@ -55,7 +58,7 @@ const Register = () => {
       <Text weight={500} mb={8}>Full name</Text>
       <TextInput
         id="name"
-        value={sessionStorage.getItem('name')?.toString() ? sessionStorage.getItem('nameLoad')?.toString() : name}
+        value={sessionStorage.getItem('name')?.toString() ? sessionStorage.getItem('name')?.toString() : name}
         mb={8}
         placeholder="Your name"
         required
@@ -69,6 +72,7 @@ const Register = () => {
       <Text weight={500} mb={8}>Birth date</Text>
       <DatePicker
         id="birthDate"
+        maxDate={new Date()}
         selected={birthDate}
         onChange={(date) => date && setBirthDate(date)}
       />
