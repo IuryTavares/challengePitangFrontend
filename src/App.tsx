@@ -1,4 +1,5 @@
 import React from 'react';
+import { NotificationsProvider } from '@mantine/notifications';
 import {
   MantineProvider, ColorSchemeProvider, ColorScheme, Paper
 } from '@mantine/core';
@@ -20,9 +21,11 @@ const App = () => {
     <div className="App">
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }}>
-          <Paper>
-            <Router />
-          </Paper>
+          <NotificationsProvider>
+            <Paper>
+              <Router />
+            </Paper>
+          </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </div>
